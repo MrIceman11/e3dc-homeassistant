@@ -1,0 +1,71 @@
+modbus:
+- name: e3dc
+  type: tcp
+  host: <e3dc IP>
+  port: 502
+  sensors:
+    - name: E3DC solar power
+      data_type: int16
+      unit_of_measurement: W
+      address: 40067
+      device_class: power
+      state_class: measurement
+    - name: E3DC battery power
+      data_type: int16
+      unit_of_measurement: W
+      address: 40069
+      device_class: power
+      state_class: measurement
+    - name: E3DC battery soc
+      unit_of_measurement: '%'
+      address: 40082
+      data_type: uint16
+      device_class: battery
+    - name: E3DC power consumption
+      data_type: int16
+      unit_of_measurement: W
+      address: 40071
+      device_class: power
+      state_class: measurement
+    - name: E3DC grid power
+      data_type: int16
+      unit_of_measurement: W
+      address: 40073
+      device_class: power
+      state_class: measurement
+    - name: E3DC emergency power state
+      address: 40083
+      data_type: uint16
+    - name: E3DC EMS state
+      address: 40084
+      data_type: uint16
+    - name: E3DC autarky and consumption
+      data_type: uint16
+      address: 40081
+    - name: E3DC string 1 power
+      data_type: uint16
+      address: 40101
+      device_class: power
+      unit_of_measurement: W
+      state_class: measurement
+    - name: E3DC string 2 power
+      data_type: uint16
+      address: 40102
+      device_class: power
+      unit_of_measurement: W
+      state_class: measurement
+    - name: E3DC powermeter 1 L1
+      data_type: int16
+      address: 40105
+      device_class: power
+      unit_of_measurement: W
+    - name: E3DC powermeter 1 L2
+      data_type: int16
+      address: 40106
+      device_class: power
+      unit_of_measurement: W
+    - name: E3DC powermeter 1 L3
+      data_type: int16
+      address: 40107
+      device_class: power
+      unit_of_measurement: W

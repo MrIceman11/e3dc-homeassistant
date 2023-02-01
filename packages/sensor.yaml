@@ -1,0 +1,102 @@
+sensor:
+    - platform: template
+      sensors:
+        e3dc_autarky:
+          friendly_name: 'E3DC Autarky'
+          unit_of_measurement: '%'
+          value_template: "{{ (states('sensor.e3dc_autarky_and_consumption')|int / 256)|round(0,'floor') }}"
+        e3dc_own_consumption:
+          friendly_name: 'E3DC Own Consumption ratio'
+          unit_of_measurement: '%'
+          value_template: "{{ ((states('sensor.e3dc_autarky_and_consumption')|int / 256 - states('sensor.e3dc_autarky')|int) * 256)|round(0,'floor') }}"
+        # Grid out
+        e3dc_grid_power_out:
+          unit_of_measurement: 'W'
+          device_class: power
+          value_template: >
+            {% if states('sensor.e3dc_grid_power') | int > 0 %}
+              0
+            {% else -%}
+              {{ (states('sensor.e3dc_grid_power') | int) | abs }} 
+            {% endif %}      
+        # Grid in
+        e3dc_grid_power_in:
+          unit_of_measurement: 'W'
+          device_class: power
+          value_template: >
+            {% if states('sensor.e3dc_grid_power') | int > 0 %}
+              {{ states('sensor.e3dc_grid_power') | int }}
+            {% else -%}
+              0
+            {% endif %}
+        # Battery out
+        e3dc_battery_power_out:
+          unit_of_measurement: 'W'
+          device_class: power
+          value_template: >
+            {% if states('sensor.e3dc_battery_power') | int > 0 %}
+              0
+            {% else -%}
+              {{ (states('sensor.e3dc_battery_power') | int) | abs }} 
+            {% endif %}
+        # Battery in
+        e3dc_battery_power_in:
+          unit_of_measurement: 'W'
+          device_class: power
+          value_template: >
+            {% if states('sensor.e3dc_battery_power') | int > 0 %}
+              {{ states('sensor.e3dc_battery_power') | int }}
+            {% else -%}
+              0
+            {% endif %}
+    
+    - platform: integration
+      source: sensor.e3dc_battery_power_out
+      name: energy_battery_discharge
+      unit_prefix: k
+      round: 2
+    - platform: integration
+      source: sensor.e3dc_battery_power_in
+      name: energy_battery_charge
+      unit_prefix: k
+      round: 2
+    - platform: integration
+      source: sensor.e3dc_solar_power
+      name: energy_solar_production
+      unit_prefix: k
+      round: 2
+    - platform: integration
+      source: sensor.e3dc_string_1_power
+      name: energy_solar_production1
+      unit_prefix: k
+      round: 2
+    - platform: integration
+      source: sensor.e3dc_string_2_power
+      name: energy_solar_production2
+      unit_prefix: k
+      round: 2
+    - platform: integration
+      source: sensor.e3dc_powermeter_1_L1
+      name: energy_solar_powermeter1
+      unit_prefix: k
+      round: 2
+    - platform: integration
+      source: sensor.e3dc_powermeter_1_L2
+      name: energy_solar_powermeter2
+      unit_prefix: k
+      round: 2
+    - platform: integration
+      source: sensor.e3dc_power_consumption
+      name: energy_consumption
+      unit_prefix: k
+      round: 2
+    - platform: integration
+      source: sensor.e3dc_grid_power_in
+      name: energy_grid_usage
+      unit_prefix: k
+      round: 2
+    - platform: integration
+      source: sensor.e3dc_grid_power_out
+      name: energy_grid_feed_in
+      unit_prefix: k
+      round: 2
