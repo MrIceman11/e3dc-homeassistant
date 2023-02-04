@@ -1,0 +1,16 @@
+# Customize Global YAML 
+# Customize entities matching a pattern
+
+# General customization for energy sensors
+# Set class to energy and enable statistic
+"sensor.*_energy":
+   last_reset: '1970-01-01T00:00:00+00:00'
+   device_class: energy
+   state_class: total_increasing
+
+# General customization for power sensors
+# Set class to power and enable statistic
+"sensor.*_power":
+   last_reset: '1970-01-01T00:00:00+00:00'
+   device_class: power
+   state_class: measurement

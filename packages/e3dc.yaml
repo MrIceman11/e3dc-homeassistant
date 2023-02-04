@@ -1,71 +1,152 @@
-modbus:
-- name: e3dc
+- name: "e3dc"
   type: tcp
-  host: <e3dc IP>
+  host: <E3DC IP>
   port: 502
+  retry_on_empty: true
   sensors:
-    - name: E3DC solar power
-      data_type: int16
+    - name: E3DC Serial Number
+      unique_id: e3dc_serial_number
+      address: 40035
+      data_type: string
+      count: 8
+      scan_interval: 86400
+    - name: E3DC Model
+      unique_id: e3dc_model
+      address: 40019
+      data_type: string
+      count: 8
+      scan_interval: 86400
+    - name: E3DC Manufacturer
+      unique_id: e3dc_manufacturer
+      address: 40003
+      data_type: string
+      count: 8
+      scan_interval: 86400
+    - name: E3DC Firmware
+      unique_id: e3dc_firmware
+      address: 40051
+      data_type: string
+      count: 8
+      scan_interval: 86400
+    - name: E3DC Modbus Firmware
+      unique_id: e3dc_modbus_firmware
+      address: 40001
+      data_type: uint16
+      scan_interval: 86400
+    - name: E3DC Solar Power
+      unique_id: e3dc_solar_power
       unit_of_measurement: W
+      data_type: int16
       address: 40067
       device_class: power
-      state_class: measurement
-    - name: E3DC battery power
-      data_type: int16
+      scan_interval: 2
+    - name: E3DC Battery Power
+      unique_id: e3dc_battery_power
       unit_of_measurement: W
       address: 40069
+      data_type: int16
       device_class: power
-      state_class: measurement
-    - name: E3DC battery soc
+      scan_interval: 2
+    - name: E3DC Battery State of Charge
+      unique_id: e3dc_battery_state_of_charge
       unit_of_measurement: '%'
       address: 40082
       data_type: uint16
       device_class: battery
-    - name: E3DC power consumption
-      data_type: int16
+      scan_interval: 30
+    - name: E3DC Power Consumption House
+      unique_id: e3dc_house_consumption_power
       unit_of_measurement: W
+      data_type: int16
       address: 40071
       device_class: power
-      state_class: measurement
-    - name: E3DC grid power
-      data_type: int16
+      scan_interval: 2
+    - name: E3DC Grid Power
+      unique_id: e3dc_grid_power
       unit_of_measurement: W
+      data_type: int16
       address: 40073
       device_class: power
-      state_class: measurement
-    - name: E3DC emergency power state
+      scan_interval: 2
+    - name: E3DC Emergency Power State
+      unique_id: e3dc_emergency_power_state
+      data_type: int16
       address: 40083
-      data_type: uint16
-    - name: E3DC EMS state
-      address: 40084
-      data_type: uint16
-    - name: E3DC autarky and consumption
+      scan_interval: 10
+    - name: E3DC Autarky and Consumption
+      unique_id: e3dc_autarky_and_consumption
       data_type: uint16
       address: 40081
-    - name: E3DC string 1 power
+      scan_interval: 60
+    - name: E3DC String 1 Power
+      unique_id: e3dc_string_1_power
       data_type: uint16
       address: 40101
       device_class: power
       unit_of_measurement: W
-      state_class: measurement
-    - name: E3DC string 2 power
+      scan_interval: 10
+    - name: E3DC String 2 Power
+      unique_id: e3dc_string_2_power
       data_type: uint16
       address: 40102
       device_class: power
       unit_of_measurement: W
-      state_class: measurement
-    - name: E3DC powermeter 1 L1
+      scan_interval: 10
+    - name: E3DC String 1 Voltage
+      unique_id: e3dc_string_1_voltage
+      data_type: uint16
+      address: 40095
+      device_class: voltage
+      unit_of_measurement: V
+      scan_interval: 10
+    - name: E3DC String 2 Voltage
+      unique_id: e3dc_string_2_voltage
+      data_type: uint16
+      address: 40096
+      device_class: voltage
+      unit_of_measurement: V
+      scan_interval: 10
+    - name: E3DC String 1 Current
+      unique_id: e3dc_string_1_current
+      data_type: uint16
+      address: 40098
+      device_class: current
+      unit_of_measurement: A
+      scale: 0.01
+      precision: 2
+      scan_interval: 10
+    - name: E3DC String 2 Current
+      unique_id: e3dc_string_2_current
+      data_type: uint16
+      address: 40099
+      device_class: current
+      unit_of_measurement: A
+      scale: 0.01
+      precision: 2
+      scan_interval: 10
+    - name: E3DC Powermeter 6
+      unique_id: e3dc_powermeter_6
       data_type: int16
-      address: 40105
+      address: 40128
+      scan_interval: 10
+    - name: E3DC Powermeter 6 L1
+      unique_id: e3dc_powermeter_6_L1
+      data_type: int16
+      address: 40129
       device_class: power
       unit_of_measurement: W
-    - name: E3DC powermeter 1 L2
+      scan_interval: 10
+    - name: E3DC Powermeter 6 L2
+      unique_id: e3dc_powermeter_6_L2
       data_type: int16
-      address: 40106
+      address: 40130
       device_class: power
       unit_of_measurement: W
-    - name: E3DC powermeter 1 L3
+      scan_interval: 10
+    - name: E3DC Powermeter 6 L3
+      unique_id: e3dc_powermeter_6_L3
       data_type: int16
-      address: 40107
+      address: 40131
       device_class: power
       unit_of_measurement: W
+      scan_interval: 10

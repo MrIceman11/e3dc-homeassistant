@@ -1,31 +1,23 @@
-binary_sensor:
-  - platform: template
-    sensors:
-      e3dc_emergency_power_possible:
-        friendly_name: "E3DC Emergency Power possible"
-        value_template: "{{ states('sensor.e3dc_ems_state')|int|bitwise_and(4) > 0 }}"
-      e3dc_battery_loading_blocked:
-        friendly_name: "E3DC Battery loading blocked"
-        value_template: "{{ states('sensor.e3dc_ems_state')|int|bitwise_and(1) > 0 }}"
-      e3dc_battery_unloading_blocked:
-        friendly_name: "E3DC Battery unloading blocked"
-        value_template: "{{ states('sensor.e3dc_ems_state')|int|bitwise_and(2) > 0 }}"
-      e3dc_weather_based_loading:
-        friendly_name: "E3DC weather based loading limiter"
-        value_template: "{{ states('sensor.e3dc_ems_state')|int|bitwise_and(8) > 0 }}"
-      e3dc_power_limiter:
-        friendly_name: "E3DC power limiter"
-        value_template: "{{ states('sensor.e3dc_ems_state')|int|bitwise_and(16) > 0 }}"
-      e3dc_smartcharge_loading_blocked:
-        friendly_name: "E3DC SmartCharge loading blocked"
-        value_template: "{{ states('sensor.e3dc_ems_state')|int|bitwise_and(32) > 0 }}"
-      e3dc_smartcharge_unloading_blocked:
-        friendly_name: "E3DC SmartCharge unloading blocked"
-        value_template: "{{ states('sensor.e3dc_ems_state')|int|bitwise_and(64) > 0 }}"
-      e3dc_emergency_power_active:
-        friendly_name: "E3DC Emergency Power Mode Active"
-        value_template: "{{ is_state('sensor.e3dc_emergency_power_state', '1') }}"
-      e3dc_emergency_power_available:
-        friendly_name: "E3DC Emergency Power Available"
-        value_template: "{{ is_state('sensor.e3dc_emergency_power_state', '1') or is_state('sensor.e3dc_emergency_power_state', '2') }}"
-        device_class: "power"
+- platform: template
+  sensors:
+    e3dc_emergency_power_available:
+      friendly_name: "E3DC Emergency Power available"
+      value_template: "{{ states('sensor.e3dc_emergency_power_state')|int|bitwise_and(4) > 0 }}"
+    e3dc_battery_loading_blocked:
+      friendly_name: "E3DC Battery loading blocked"
+      value_template: "{{ states('sensor.e3dc_emergency_power_state')|int|bitwise_and(1) > 0 }}"
+    e3dc_battery_unloading_blocked:
+      friendly_name: "E3DC Battery unloading blocked"
+      value_template: "{{ states('sensor.e3dc_emergency_power_state')|int|bitwise_and(2) > 0 }}"
+    e3dc_weather_based_loading:
+      friendly_name: "E3DC weather based loading limiter"
+      value_template: "{{ states('sensor.e3dc_emergency_power_state')|int|bitwise_and(8) > 0 }}"
+    e3dc_power_limiter:
+      friendly_name: "E3DC power limiter"
+      value_template: "{{ states('sensor.e3dc_emergency_power_state')|int|bitwise_and(16) > 0 }}"
+    e3dc_smartcharge_loading_blocked:
+      friendly_name: "E3DC SmartCharge loading blocked"
+      value_template: "{{ states('sensor.e3dc_emergency_power_state')|int|bitwise_and(32) > 0 }}"
+    e3dc_smartcharge_unloading_blocked:
+      friendly_name: "E3DC SmartCharge unloading blocked"
+      value_template: "{{ states('sensor.e3dc_emergency_power_state')|int|bitwise_and(64) > 0 }}"

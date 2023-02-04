@@ -11,7 +11,11 @@ Copy on your Home Assistant server the folder `packages` at the same level of th
 Add the following line to your `configuration.yaml` file:
 
 ```homeassistant:
-  packages: !include_dir_named packages/ 
+  customize_glob: !include packages/customize_global.yaml
+
+modbus: !include packages/e3dc.yaml
+binary_sensor: !include packages/binary_sensors.yaml
+sensor: !include packages/sensors.yaml
 ```
 
 Edit the file `packages/e3dc.yaml` and add your E3DC device IP address.
@@ -20,6 +24,12 @@ Edit the file `packages/e3dc.yaml` and add your E3DC device IP address.
 
 Restart Home Assistant and you will find the sensors in the `e3dc` entity. Now you can use them in your automations or add the sensors to your dashboard.
 If your add HACS to your Home Assistant, you can add the Layout called [Power-Distribution-Card](https://github.com/JonahKr/power-distribution-card)
+
+To Add the Sensor to your Energy Dashboard use the following Sensors:
+
+![Dashboard_Config](example/dashboard_config.png)
+
+It is normal that some sensors are not available. This is because the E3DC device has not yet sent all the values. This can take up to 2 days.
 
 ## Sensors
 
