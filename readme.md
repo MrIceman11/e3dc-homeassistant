@@ -27,7 +27,7 @@ If your add HACS to your Home Assistant, you can add the Layout called [Power-Di
 
 To Add the Sensor to your Energy Dashboard use the following Sensors:
 
-<img src="https://github.com/MrIceman11/e3dc-homeassistant/blob/main/examples/Dashboard_Config.png?raw=true"/>
+<img src="[https://github.com/MrIceman11/e3dc-homeassistant/blob/main/examples/Dashboard_Config.png?raw=true](https://github.com/MrIceman11/e3dc-homeassistant/blob/main/examples/Dashboard_Config_2.png?raw=true)"/>
 
 It is normal that some sensors are not available. This is because the E3DC device has not yet sent all the values. This can take up to 2 days.
 
