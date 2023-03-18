@@ -1,0 +1,114 @@
+e3dc_utility_meters:
+  utility_meter:
+    # Solar Energy
+    e3dc_solar_daily_energy:
+      source: sensor.e3dc_solar_energy
+      unique_id: e3dc_solar_daily_energy
+      name: E3DC Solar Daily Energy
+      cycle: daily
+    e3dc_solar_monthly_energy:
+      source: sensor.e3dc_solar_energy
+      unique_id: e3dc_solar_monthly_energy
+      name: E3DC Solar Monthly Energy
+      cycle: monthly
+    e3dc_solar_yearly_energy:
+      source: sensor.e3dc_solar_energy
+      unique_id: e3dc_solar_yearly_energy
+      name: E3DC Solar Yearly Energy
+      cycle: yearly
+    # Grid Import Energy
+    e3dc_grid_import_daily_energy:
+      source: sensor.e3dc_grid_import_energy
+      unique_id: e3dc_grid_import_daily_energy
+      name: E3DC Grid Import Daily Energy
+      cycle: daily
+    e3dc_grid_import_monthly_energy:
+      source: sensor.e3dc_grid_import_energy
+      unique_id: e3dc_grid_import_monthly_energy
+      name: E3DC Grid Import Monthly Energy
+      cycle: monthly
+    e3dc_grid_import_yearly_energy:
+      source: sensor.e3dc_grid_import_energy
+      unique_id: e3dc_grid_import_yearly_energy
+      name: E3DC Grid Import Yearly Energy
+      cycle: yearly
+    # Grid Import Energy Cost
+    e3dc_grid_import_daily_energy_cost:
+      source: sensor.e3dc_grid_import_energy_cost
+      unique_id: e3dc_grid_import_daily_energy_cost
+      name: E3DC Grid Import Daily Energy Cost
+      cycle: daily
+    e3dc_grid_import_monthly_energy_cost:
+      source: sensor.e3dc_grid_import_energy_cost
+      unique_id: e3dc_grid_import_monthly_energy_cost
+      name: E3DC Grid Import Monthly Energy Cost
+      cycle: monthly
+    e3dc_grid_import_yearly_energy_cost:
+      source: sensor.e3dc_grid_import_energy_cost
+      unique_id: e3dc_grid_import_yearly_energy_cost
+      name: E3DC Grid Import Yearly Energy Cost
+      cycle: yearly
+    # Grid Export Energy
+    e3dc_grid_export_daily_energy:
+      source: sensor.e3dc_grid_export_energy
+      unique_id: e3dc_grid_export_daily_energy
+      name: E3DC Grid Export Daily Energy
+      cycle: daily
+    e3dc_grid_export_monthly_energy:
+      source: sensor.e3dc_grid_export_energy
+      unique_id: e3dc_grid_export_monthly_energy
+      name: E3DC Grid Export Monthly Energy
+      cycle: monthly
+    e3dc_grid_export_yearly_energy:
+      source: sensor.e3dc_grid_export_energy
+      unique_id: e3dc_grid_export_yearly_energy
+      name: E3DC Grid Export Yearly Energy
+      cycle: yearly
+    # Grid Export Energy Compensation
+    e3dc_grid_export_daily_energy_compensation:
+      source: sensor.e3dc_grid_export_energy_compensation
+      unique_id: e3dc_grid_export_daily_energy_compensation
+      name: E3DC Grid Export Daily Energy Compensation
+      cycle: daily
+    e3dc_grid_export_monthly_energy_compensation:
+      source: sensor.e3dc_grid_export_energy_compensation
+      unique_id: e3dc_grid_export_monthly_energy_compensation
+      name: E3DC Grid Export Monthly Energy Compensation
+      cycle: monthly
+    e3dc_grid_export_yearly_energy_compensation:
+      source: sensor.e3dc_grid_export_energy_compensation
+      unique_id: e3dc_grid_export_yearly_energy_compensation
+      name: E3DC Grid Export Yearly Energy Compensation
+      cycle: yearly
+    # Battery Charge Energy
+    e3dc_battery_charge_daily_energy:
+      source: sensor.e3dc_battery_charge_energy
+      unique_id: e3dc_battery_charge_daily_energy
+      name: E3DC Battery Charge Daily Energy
+      cycle: daily
+    e3dc_battery_charge_monthly_energy:
+      source: sensor.e3dc_battery_charge_energy
+      unique_id: e3dc_battery_charge_monthly_energy
+      name: E3DC Battery Charge Monthly Energy
+      cycle: monthly
+    e3dc_battery_charge_yearly_energy:
+      source: sensor.e3dc_battery_charge_energy
+      unique_id: e3dc_battery_charge_yearly_energy
+      name: E3DC Battery Charge Yearly Energy
+      cycle: yearly
+    # Battery Discharge Energy
+    e3dc_battery_discharge_daily_energy:
+      source: sensor.e3dc_battery_discharge_energy
+      unique_id: e3dc_battery_discharge_daily_energy
+      name: E3DC Battery Discharge Daily Energy
+      cycle: daily
+    e3dc_battery_discharge_monthly_energy:
+      source: sensor.e3dc_battery_discharge_energy
+      unique_id: e3dc_battery_discharge_monthly_energy
+      name: E3DC Battery Discharge Monthly Energy
+      cycle: monthly
+    e3dc_battery_discharge_yearly_energy:
+      source: sensor.e3dc_battery_discharge_energy
+      unique_id: e3dc_battery_discharge_yearly_energy
+      name: E3DC Battery Discharge Yearly Energy
+      cycle: yearly

@@ -1,82 +1,109 @@
-- platform: template
-  sensors:
-    e3dc_grid_export_power:
-      unique_id: e3dc_grid_export_power
-      friendly_name: "E3DC Grid Export Power"
-      unit_of_measurement: "W"
-      device_class: power
-      value_template: >
-        {% if states('sensor.e3dc_grid_power') | int > 0 %}
-          0
-        {% else -%}
-          {{ (states('sensor.e3dc_grid_power') | int) | abs }} 
-        {% endif %}  
-    e3dc_grid_import_power:
-      unique_id: e3dc_grid_import_power
-      friendly_name: E3DC Grid Import Power
-      unit_of_measurement: W
-      device_class: power
-      value_template: >
-        {% if states('sensor.e3dc_grid_power') | int > 0 %}
-          {{ states('sensor.e3dc_grid_power') }}
-        {% else -%}
-          0
-        {% endif %}
-    e3dc_battery_charge_power:
-      unique_id: e3dc_battery_charge_power
-      friendly_name: E3DC Battery Charging Power
-      unit_of_measurement: W
-      device_class: power
-      value_template: >
-        {% if states('sensor.e3dc_battery_power') | int >= 0 %}
-          {{ states('sensor.e3dc_battery_power') }}
-        {% endif %}  
-    e3dc_battery_discharge_power:
-      unique_id: e3dc_battery_discharge_power
-      friendly_name: E3DC Battery Discharging Power
-      unit_of_measurement: W
-      device_class: power
-      value_template: >
-        {% if states('sensor.e3dc_battery_power') | int <= 0 %}
-          {{ (states('sensor.e3dc_battery_power') | int) | abs }} 
-        {% endif %} 
-    e3dc_autarky:
-      friendly_name: "E3DC Autarky"
-      unique_id: e3dc_autarky
-      unit_of_measurement: "%"
-      value_template: "{{ (states('sensor.e3dc_autarky_and_consumption')|int / 256)|round(0,'floor') }}"
-    e3dc_own_consumption:
-      friendly_name: "E3DC Own Consumption ratio"
-      unique_id: e3dc_own_consumption_ratio
-      unit_of_measurement: "%"
-      value_template: "{{ ((states('sensor.e3dc_autarky_and_consumption')|int / 256 - states('sensor.e3dc_autarky')|int) * 256)|round(0,'floor') }}"
-- platform: integration
-  source: sensor.e3dc_grid_import_power
-  name: E3DC Grid Import Energy
-  unit_prefix: k
-  round: 2
-- platform: integration
-  source: sensor.e3dc_grid_export_power
-  name: E3DC Grid Export Energy
-  unit_prefix: k
-  round: 2
-- platform: integration
-  source: sensor.e3dc_solar_power
-  name: E3DC Solar Energy
-  unit_prefix: k
-  round: 2
-- platform: integration
-  source: sensor.e3dc_battery_power
-  name: E3DC Builtin Battery Energy
-  unit_prefix: k
-  round: 2
-- platform: integration
-  source: sensor.e3dc_battery_charge_power
-  name: E3DC Battery Charge Energy
-  unit_prefix: k
-  round: 2
-- platform: integration
-  source: sensor.e3dc_battery_discharge_power
-  name: E3DC Battery Discharge Energy
-  unit_prefix: k
-  round: 2
+e3dc_sensors:
+  sensor:
+    # Templates
+    - platform: template
+      sensors:
+        e3dc_grid_export_power:
+          unique_id: e3dc_grid_export_power
+          friendly_name: "E3DC Grid Export Power"
+          unit_of_measurement: "W"
+          device_class: power
+          value_template: >
+            {% set power = states('sensor.e3dc_grid_power') | int(0) %}
+            {% if power > 0 %}
+              0
+            {% else -%}
+              {{ power | abs }} 
+            {% endif %}
+        e3dc_grid_import_power:
+          unique_id: e3dc_grid_import_power
+          friendly_name: E3DC Grid Import Power
+          unit_of_measurement: W
+          device_class: power
+          value_template: >
+            {% set power = states('sensor.e3dc_grid_power') | int(0) %}
+            {% if power > 0 %}
+              {{ power }}
+            {% else -%}
+              0
+            {% endif %}
+        e3dc_battery_charge_power:
+          unique_id: e3dc_battery_charge_power
+          friendly_name: E3DC Battery Charging Power
+          unit_of_measurement: W
+          device_class: power
+          value_template: >
+            {% set power = states('sensor.e3dc_battery_power') | int(0) %}
+            {% if power | int >= 0 %}
+              {{ power }}
+            {% endif %}
+        e3dc_battery_discharge_power:
+          unique_id: e3dc_battery_discharge_power
+          friendly_name: E3DC Battery Discharging Power
+          unit_of_measurement: W
+          device_class: power
+          value_template: >
+            {% set power = states('sensor.e3dc_battery_power') | int(0) %}
+            {% if power <= 0 %}
+              {{ power | abs }} 
+            {% endif %}
+        e3dc_autarky:
+          friendly_name: "E3DC Autarky"
+          unique_id: e3dc_autarky
+          unit_of_measurement: "%"
+          value_template: "{{ (states('sensor.e3dc_autarky_and_consumption')|int(0) / 256)|round(0,'floor') }}"
+        e3dc_own_consumption:
+          friendly_name: "E3DC Own Consumption Ratio"
+          unique_id: e3dc_own_consumption_ratio
+          unit_of_measurement: "%"
+          value_template: "{{ ((states('sensor.e3dc_autarky_and_consumption')|int(0) / 256 - states('sensor.e3dc_autarky')|int(0)) * 256)|round(0,'floor') }}"
+        e3dc_emergency_power_state_text:
+          friendly_name: E3DC Emergency Power State Text
+          unique_id: e3dc_emergency_power_state_text
+          value_template: >
+            {% set eps = states('sensor.e3dc_emergency_power_state') %}
+            {% if eps == '0' %}
+              nicht unterstützt
+            {% elif eps == '1' %}
+              aktiv
+            {% elif eps == '2' %}
+              inaktiv
+            {% elif eps == '3' %}
+              nicht verfügbar
+            {% elif eps == '4' %}
+              falsche Position
+            {% else %}
+              unbekannt
+            {% endif %}
+
+    # Integrations
+    - platform: integration
+      source: sensor.e3dc_grid_import_power
+      name: E3DC Grid Import Energy
+      unit_prefix: k
+      round: 2
+    - platform: integration
+      source: sensor.e3dc_grid_export_power
+      name: E3DC Grid Export Energy
+      unit_prefix: k
+      round: 2
+    - platform: integration
+      source: sensor.e3dc_solar_power
+      name: E3DC Solar Energy
+      unit_prefix: k
+      round: 2
+    - platform: integration
+      source: sensor.e3dc_battery_power
+      name: E3DC Builtin Battery Energy
+      unit_prefix: k
+      round: 2
+    - platform: integration
+      source: sensor.e3dc_battery_charge_power
+      name: E3DC Battery Charge Energy
+      unit_prefix: k
+      round: 2
+    - platform: integration
+      source: sensor.e3dc_battery_discharge_power
+      name: E3DC Battery Discharge Energy
+      unit_prefix: k
+      round: 2

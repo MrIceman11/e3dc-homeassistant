@@ -11,14 +11,15 @@ Copy on your Home Assistant server the folder `packages` at the same level of th
 Add the following line to your `configuration.yaml` file:
 
 ```homeassistant:
-  customize_glob: !include packages/customize_global.yaml
-
-modbus: !include packages/e3dc.yaml
-binary_sensor: !include packages/binary_sensors.yaml
-sensor: !include packages/sensors.yaml
+  packages: !include_dir_merge_named packages/
 ```
 
-Edit the file `packages/e3dc.yaml` and add your E3DC device IP address.
+Edit the file `packages/modbus.yaml` and add your E3DC device IP address.
+
+## Extra Config
+
+If you want to add utility_meter for creating daily/weekly/monthly sensors for better graphs or exporting to prometheus you can add the the file `extras/utility_meter.yaml` into the `packages` folder.
+
 
 ## Usage
 
@@ -51,3 +52,4 @@ The following sensors are available: (not completed!!)
 ## Credits
 
 This configuration Files are based on the work of Community-Contribution: [E3DC in Energy Dashboard](https://community.home-assistant.io/t/e3dc-in-energy-dashboard/379800)
+Thangs to [Roman](https://github.com/Roemer) for Sharing his work.

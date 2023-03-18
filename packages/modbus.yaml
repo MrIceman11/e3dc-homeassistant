@@ -1,0 +1,88 @@
+e3dc_modbus:
+  modbus:
+    - name: "e3dc"
+      type: tcp
+      host: e3dc_ip
+      port: 502
+      retry_on_empty: true
+      sensors:
+        # Identification Block
+        - name: E3DC Modbus Firmware
+          unique_id: e3dc_modbus_firmware
+          address: 40001
+          data_type: uint16
+          scan_interval: 86400
+        - name: E3DC Manufacturer
+          unique_id: e3dc_manufacturer
+          address: 40003
+          data_type: string
+          count: 16
+          scan_interval: 86400
+        - name: E3DC Model
+          unique_id: e3dc_model
+          address: 40019
+          data_type: string
+          count: 16
+          scan_interval: 86400
+        - name: E3DC Serial Number
+          unique_id: e3dc_serial_number
+          address: 40035
+          data_type: string
+          count: 16
+          scan_interval: 86400
+        - name: E3DC Firmware Release
+          unique_id: e3dc_firmware_release
+          address: 40051
+          data_type: string
+          count: 16
+          scan_interval: 86400
+        # Power Data
+        - name: E3DC Solar Power
+          unique_id: e3dc_solar_power
+          unit_of_measurement: W
+          device_class: power
+          data_type: int32
+          address: 40067
+          scan_interval: 2
+          swap: word
+        - name: E3DC Battery Power
+          unique_id: e3dc_battery_power
+          unit_of_measurement: W
+          device_class: power
+          data_type: int32
+          address: 40069
+          scan_interval: 2
+          swap: word
+        - name: E3DC Power Consumption House
+          unique_id: e3dc_house_consumption_power
+          unit_of_measurement: W
+          device_class: power
+          data_type: int32
+          address: 40071
+          scan_interval: 2
+          swap: word
+        - name: E3DC Grid Power
+          unique_id: e3dc_grid_power
+          unit_of_measurement: W
+          device_class: power
+          data_type: int32
+          address: 40073
+          scan_interval: 2
+          swap: word
+        - name: E3DC Autarky and Consumption
+          unique_id: e3dc_autarky_and_consumption
+          data_type: int16
+          address: 40081
+          scan_interval: 60
+        - name: E3DC Battery State of Charge
+          unique_id: e3dc_battery_state_of_charge
+          unit_of_measurement: "%"
+          device_class: battery
+          data_type: int16
+          address: 40082
+          scan_interval: 30
+        - name: E3DC Emergency Power State
+          unique_id: e3dc_emergency_power_state
+          data_type: int16
+          address: 40083
+          scan_interval: 10
