@@ -4,7 +4,9 @@ This is a custom configuration for Home Assistant to read data from an E3DC devi
 
 ## Installation
 
-Copy on your Home Assistant server the folder `packages` at the same level of the `configuration.yaml` file.
+Copy on your Home Assistant server the folder `packages` at the same level of the `configuration.yaml` file. 
+
+For a better overview, you can create a subfolder `e3dc` under the `packages` folder and copy the files there. Is recommended.
 
 ## Configuration
 
@@ -53,4 +55,5 @@ The following sensors are available: (not completed!!)
 ## Credits
 
 This configuration Files are based on the work of Community-Contribution: [E3DC in Energy Dashboard](https://community.home-assistant.io/t/e3dc-in-energy-dashboard/379800)
+
 Thangs to [Roman](https://github.com/Roemer) for Sharing his work.
