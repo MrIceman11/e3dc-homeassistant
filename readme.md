@@ -10,7 +10,8 @@ Copy on your Home Assistant server the folder `packages` at the same level of th
 
 Add the following line to your `configuration.yaml` file:
 
-```homeassistant:
+```
+  homeassistant:
   packages: !include_dir_merge_named packages/
 ```
 
