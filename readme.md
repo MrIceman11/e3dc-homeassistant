@@ -37,20 +37,15 @@ It is normal that some sensors are not available. This is because the E3DC devic
 
 ## Sensors
 
-The following sensors are available: (not completed!!)
+The following sensors are available:
 
-  * `e3dc_battery_charge` - Battery charge in percent
-  * `e3dc_battery_discharge` - Battery discharge in percent
-  * `e3dc_battery_power` - Battery power in Watt
-  * `e3dc_battery_voltage` - Battery voltage in Volt
-  * `e3dc_grid_power` - Grid power in Watt
-  * `e3dc_grid_voltage` - Grid voltage in Volt
-  * `e3dc_home_power` - Home power in Watt
-  * `e3dc_home_voltage` - Home voltage in Volt
-  * `e3dc_pv_power` - PV power in Watt
-  * `e3dc_pv_voltage` - PV voltage in Volt
-  * `e3dc_wallbox_power` - Wallbox power in Watt
-  * `e3dc_wallbox_voltage` - Wallbox voltage in Volt
+  * `e3dc_grid_export_power` - Grid Export Power in Watt
+  * `e3dc_grid_import_power` - Grid Import Power in Watt
+  * `e3dc_battery_charge_power` - Battery Charge Power in Watt
+  * `e3dc_battery_discharge_power` - Battery Discharge Power in Watt
+  * `e3dc_autarky` - Autarky in % per day
+  * `e3dc_own_consumption` - Own Consumption in % per day
+  * `e3dc_emergency_power_state_text` - emergency power state in text
 
 ## Credits
 
