@@ -4,7 +4,7 @@ This is a custom configuration for Home Assistant to read data from an E3DC devi
 
 ## Installation
 
-Copy on your Home Assistant server the folder `packages` at the same level of the `configuration.yaml` file. 
+Copy on your Home Assistant server the folder `packages` at the same level of the `configuration.yaml` file.
 
 For a better overview, you can create a subfolder `e3dc` under the `packages` folder and copy the files there. Is recommended.
 
@@ -13,7 +13,7 @@ For a better overview, you can create a subfolder `e3dc` under the `packages` fo
 Add the following line to your `configuration.yaml` file:
 
 ```
-  homeassistant:
+homeassistant:
   packages: !include_dir_merge_named packages/
 ```
 
