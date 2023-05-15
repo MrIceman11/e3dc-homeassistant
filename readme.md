@@ -44,6 +44,7 @@ The following sensors are available:
   * `e3dc_battery_charge_power` - Battery Charge Power in Watt
   * `e3dc_battery_discharge_power` - Battery Discharge Power in Watt
   * `e3dc_autarky` - Autarky in % per day
+  * `e3dc_external_power` - Power of an additional source in Watt
   * `e3dc_own_consumption` - Own Consumption in % per day
   * `e3dc_emergency_power_state_text` - emergency power state in text
 

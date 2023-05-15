@@ -13,7 +13,7 @@ e3dc_sensors:
             {% if power > 0 %}
               0
             {% else -%}
-              {{ power | abs }} 
+              {{ power | abs }}
             {% endif %}
         e3dc_grid_import_power:
           unique_id: e3dc_grid_import_power
@@ -45,7 +45,7 @@ e3dc_sensors:
           value_template: >
             {% set power = states('sensor.e3dc_battery_power') | int(0) %}
             {% if power <= 0 %}
-              {{ power | abs }} 
+              {{ power | abs }}
             {% endif %}
         e3dc_autarky:
           friendly_name: "E3DC Autarky"
@@ -92,6 +92,12 @@ e3dc_sensors:
     - platform: integration
       source: sensor.e3dc_solar_power
       name: E3DC Solar Energy
+      unit_prefix: k
+      round: 2
+      method: left
+    - platform: integration
+      source: sensor.e3dc_external_power
+      name: E3DC External Power
       unit_prefix: k
       round: 2
       method: left
