@@ -4,7 +4,9 @@ This is a custom configuration for Home Assistant to read data from an E3DC devi
 
 ## Installation
 
-Copy the folder `packages` with it's contents to your Home Assistant server at the same level as the `configuration.yaml` file.
+Copy the folder `packages` with it's contents to your Home Assistant server at the same level as the `configuration.yaml` file. 
+
+Be sure that you have activated Modbus in your storage.
 
 ## Configuration
 
