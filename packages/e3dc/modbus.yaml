@@ -4,7 +4,6 @@ e3dc_modbus:
       type: tcp
       host: e3dc_ip
       port: 502
-      retry_on_empty: true
       sensors:
         # Identification Block
         - name: E3DC Modbus Firmware
@@ -93,4 +92,42 @@ e3dc_modbus:
           unique_id: e3dc_emergency_power_state
           data_type: int16
           address: 40083
+          scan_interval: 10
+        # Power Meter
+        - name: E3DC string 1 power
+          unique_id: e3dc_string1_power_6608742
+          data_type: uint16
+          address: 40101
+          device_class: power
+          unit_of_measurement: W
+          state_class: measurement
+          scan_interval: 10
+        - name: E3DC string 2 power
+          unique_id: e3dc_string2_power_6608742
+          data_type: uint16
+          address: 40102
+          device_class: power
+          unit_of_measurement: W
+          state_class: measurement
+          scan_interval: 10
+        - name: E3DC powermeter L1
+          unique_id: e3dc_powermeter_L1_6608742
+          data_type: int16
+          address: 40105
+          device_class: power
+          unit_of_measurement: W
+          scan_interval: 10
+        - name: E3DC powermeter L2
+          unique_id: e3dc_powermeter_L2_6608742
+          data_type: int16
+          address: 40106
+          device_class: power
+          unit_of_measurement: W
+          scan_interval: 10
+        - name: E3DC powermeter L3
+          unique_id: e3dc_powermeter_L3_6608742
+          data_type: int16
+          address: 40107
+          device_class: power
+          unit_of_measurement: W          
           scan_interval: 10
