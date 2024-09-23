@@ -112,3 +112,19 @@ e3dc_utility_meters:
       unique_id: e3dc_battery_discharge_yearly_energy
       name: E3DC Battery Discharge Yearly Energy
       cycle: yearly
+    # Wallbox Energy
+    e3dc_wallbox_daily_energy:
+      source: sensor.e3dc_wallbox_energy
+      unique_id: e3dc_wallbox_daily_energy
+      name: E3DC Wallbox Daily Energy
+      cycle: daily
+    e3dc_wallbox_monthly_energy:
+      source: sensor.e3dc_wallbox_energy
+      unique_id: e3dc_wallbox_monthly_energy
+      name: E3DC Wallbox Monthly Energy
+      cycle: monthly
+    e3dc_wallbox_yearly_energy:
+      source: sensor.e3dc_wallbox_energy
+      unique_id: e3dc_wallbox_yearly_energy
+      name: E3DC Wallbox Yearly Energy
+      cycle: yearly
