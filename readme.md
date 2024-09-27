@@ -21,7 +21,12 @@ Edit the file `packages/e3dc/modbus.yaml` and add your E3DC device IP address.
 
 ## Extra Config
 
-If you want to add utility_meter for creating daily/weekly/monthly sensors for better graphs or exporting to prometheus you can add the the file `extras/utility_meter.yaml` into the `packages` folder.
+If you want to add utility_meter for creating daily/weekly/monthly sensors for better graphs or exporting to prometheus, you can add the the file `extras/utility_meter.yaml` into the `packages` folder.
+
+## Wallbox
+
+Utility meters for the wallbox are inclued. You can track the wallbox energy in the enregy panel by adding `sensor.e3dc_wallbox_energie` to the individual devices section like shown in the example.
+
 
 ## Usage
 
@@ -45,7 +50,8 @@ The following sensors are available:
   * `e3dc_autarky` - Autarky in % per day
   * `e3dc_external_power` - Power of an additional source in Watt
   * `e3dc_own_consumption` - Own Consumption in % per day
-  * `e3dc_emergency_power_state_text` - emergency power state in text
+  * `e3dc_emergency_power_state_text` - Emergency power state in text
+  * `e3dc_wallbox_power` - Wallbox Power in Watt
 
 ## Credits
 
