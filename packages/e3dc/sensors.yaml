@@ -8,13 +8,6 @@ e3dc_sensors:
           unit_of_measurement: W
           value_template: >
             { states('sensor.e3dc_external_power') | float | abs }}
-        e3dc_wallbox_power:
-          unique_id: e3dc_wallbox_power
-          friendly_name: E3DC Wallbox Power
-          unit_of_measurement: W
-          device_class: power
-          value_template: >
-            { set power = states('sensor.e3dc_wallbox_power') | float | abs }
         e3dc_grid_export_power:
           unique_id: e3dc_grid_export_power
           friendly_name: "E3DC Grid Export Power"
@@ -93,6 +86,18 @@ e3dc_sensors:
             {% else %}
               unbekannt
             {% endif %}
+        e3dc_sg_ready_state_text:
+          friendly_name: E3DC SG Ready State Text
+          unique_id: e3dc_sg_ready_state_text
+          value_template: >
+            {% set sgrs = states('sensor.e3dc_sg_ready_state') %}
+            {% if sgrs == '2' %}
+              normal operation
+            {% elif sgrs == '3' %}
+              solar system is in the overproduction mode
+            {% else %}
+              unknown
+            {% endif %}
     # Integrations
     - platform: integration
       source: sensor.e3dc_grid_import_power
@@ -139,6 +144,12 @@ e3dc_sensors:
     - platform: integration
       source: sensor.e3dc_wallbox_power
       name: E3DC Wallbox Power
+      unit_prefix: k
+      round: 2
+      method: left
+    - platform: integration
+      source: sensor.e3dc_wallbox_solar_power
+      name: E3DC Wallbox Solar Energy
       unit_prefix: k
       round: 2
       method: left
