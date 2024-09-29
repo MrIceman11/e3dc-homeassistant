@@ -8,13 +8,6 @@ e3dc_sensors:
           unit_of_measurement: W
           value_template: >
             { states('sensor.e3dc_external_power') | float | abs }}
-        e3dc_wallbox_power:
-          unique_id: e3dc_wallbox_power
-          friendly_name: E3DC Wallbox Power
-          unit_of_measurement: W
-          device_class: power
-          value_template: >
-            { set power = states('sensor.e3dc_wallbox_power') | float | abs }
         e3dc_grid_export_power:
           unique_id: e3dc_grid_export_power
           friendly_name: "E3DC Grid Export Power"
