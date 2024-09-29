@@ -109,6 +109,11 @@ e3dc_modbus:
           data_type: int16
           address: 40083
           scan_interval: 10
+        - name: E3DC SG Ready State
+          unique_id: e3dc_sg_ready_state
+          data_type: int16
+          address: 40136
+          scan_interval: 10
         # Power Meter
         - name: E3DC string 1 power
           unique_id: e3dc_string1_power_6608742
