@@ -128,3 +128,19 @@ e3dc_utility_meters:
       unique_id: e3dc_wallbox_yearly_energy
       name: E3DC Wallbox Yearly Energy
       cycle: yearly
+    # Wallbox Solar Energy
+    e3dc_wallbox_solar_daily_energy:
+      source: sensor.e3dc_wallbox_solar_energy
+      unique_id: e3dc_wallbox_solar_daily_energy
+      name: E3DC Wallbox Solar Daily Energy
+      cycle: daily
+    e3dc_wallbox_solar_monthly_energy:
+      source: sensor.e3dc_wallbox_solar_energy
+      unique_id: e3dc_wallbox_solar_monthly_energy
+      name: E3DC Wallbox Solar Monthly Energy
+      cycle: monthly
+    e3dc_wallbox_solar_yearly_energy:
+      source: sensor.e3dc_wallbox_solar_energy
+      unique_id: e3dc_wallbox_solar_yearly_energy
+      name: E3DC Wallbox Solar Yearly Energy
+      cycle: yearly
