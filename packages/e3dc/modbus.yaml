@@ -84,6 +84,14 @@ e3dc_modbus:
           address: 40077
           scan_interval: 2
           swap: word
+        - name: E3DC Wallbox Solar Power
+          unique_id: e3dc_wallbox_solar_power
+          unit_of_measurement: W 
+          device_class: power
+          data_type: int32
+          address: 40079
+          scan_interval: 2
+          swap: word
         - name: E3DC Autarky and Consumption
           unique_id: e3dc_autarky_and_consumption
           data_type: int16

@@ -135,3 +135,9 @@ e3dc_sensors:
       unit_prefix: k
       round: 2
       method: left
+    - platform: integration
+      source: sensor.e3dc_wallbox_solar_power
+      name: E3DC Wallbox Solar Energy
+      unit_prefix: k
+      round: 2
+      method: left
