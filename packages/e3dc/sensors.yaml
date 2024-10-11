@@ -91,12 +91,16 @@ e3dc_sensors:
           unique_id: e3dc_sg_ready_state_text
           value_template: >
             {% set sgrs = states('sensor.e3dc_sg_ready_state') %}
-            {% if sgrs == '2' %}
-              normal operation
+            {% if sgrs == '1' %}
+              sperrbetrieb
+            {% elif sgrs == '2' %}
+              normalberrieb
             {% elif sgrs == '3' %}
-              solar system is in the overproduction mode
+              pv-überschussbetrieb
+            {% elif sgrs == '4' %}
+              betrieb für abriegelung
             {% else %}
-              unknown
+              unbekannt
             {% endif %}
     # Integrations
     - platform: integration
