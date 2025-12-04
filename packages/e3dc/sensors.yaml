@@ -1,43 +1,42 @@
 e3dc_sensors:
-  sensor:
-    # Templates
-    - platform: template
-      sensors:
-        e3dc_external_power:
-          friendly_name: E3DC External Power
-          unit_of_measurement: W
-          value_template: >
-            { states('sensor.e3dc_external_power') | float | abs }}
-        e3dc_grid_export_power:
+  template:
+    - sensor:
+        - name: "E3DC External Power"
+          unique_id: e3dc_external_power
+          default_entity_id: sensor.e3dc_external_power
+          unit_of_measurement: "W"
+          state: >
+            {{ states('sensor.e3dc_external_power') | float | abs }}
+        - name: "E3DC Grid Export Power"
           unique_id: e3dc_grid_export_power
-          friendly_name: "E3DC Grid Export Power"
+          default_entity_id: sensor.e3dc_grid_export_power
           unit_of_measurement: "W"
           device_class: power
-          value_template: >
+          state: >
             {% set power = states('sensor.e3dc_grid_power') | int(0) %}
             {% if power > 0 %}
               0
             {% else -%}
               {{ power | abs }}
             {% endif %}
-        e3dc_grid_import_power:
+        - name: "E3DC Grid Import Power"
           unique_id: e3dc_grid_import_power
-          friendly_name: E3DC Grid Import Power
-          unit_of_measurement: W
+          default_entity_id: sensor.e3dc_grid_import_power
+          unit_of_measurement: "W"
           device_class: power
-          value_template: >
+          state: >
             {% set power = states('sensor.e3dc_grid_power') | int(0) %}
             {% if power > 0 %}
               {{ power }}
-            {% else -%}
+            {% else %}
               0
             {% endif %}
-        e3dc_battery_charge_power:
+        - name: "E3DC Battery Charging Power"
           unique_id: e3dc_battery_charge_power
-          friendly_name: E3DC Battery Charging Power
-          unit_of_measurement: W
+          default_entity_id: sensor.e3dc_battery_charge_power
+          unit_of_measurement: "W"
           device_class: power
-          value_template: >
+          state: >
             {% set power = states('sensor.e3dc_battery_power') | float(0) %}
             {% if power >= 0 %}
               {{ power }}
@@ -45,12 +44,12 @@ e3dc_sensors:
               {% set charge_power = states('sensor.e3dc_battery_charge_power') | float(0) + power %}
               {{ charge_power if charge_power > 0 else 0 }}
             {% endif %}
-        e3dc_battery_discharge_power:
+        - name: "E3DC Battery Discharging Power"
           unique_id: e3dc_battery_discharge_power
-          friendly_name: E3DC Battery Discharging Power
-          unit_of_measurement: W
+          default_entity_id: sensor.e3dc_battery_discharge_power
+          unit_of_measurement: "W"
           device_class: power
-          value_template: >
+          state: >
             {% set power = states('sensor.e3dc_battery_power') | float(0) %}
             {% if power <= 0 %}
               {{ power | abs }} 
@@ -58,20 +57,23 @@ e3dc_sensors:
               {% set discharge_power = states('sensor.e3dc_battery_charge_power') | float(0) - power %}
               {{ discharge_power if discharge_power > 0 else 0 }}
             {% endif %}
-        e3dc_autarky:
-          friendly_name: "E3DC Autarky"
+        - name: "E3DC Autarky"
           unique_id: e3dc_autarky
+          default_entity_id: sensor.e3dc_autarky
           unit_of_measurement: "%"
-          value_template: "{{ (states('sensor.e3dc_autarky_and_consumption')|int(0) / 256)|round(0,'floor') }}"
-        e3dc_own_consumption:
-          friendly_name: "E3DC Own Consumption Ratio"
+          state: >
+            {{ (states('sensor.e3dc_autarky_and_consumption') | int(0) / 256) | round(0, 'floor') }}
+        - name: "E3DC Own Consumption Ratio"
           unique_id: e3dc_own_consumption_ratio
+          default_entity_id: sensor.e3dc_own_consumption_ratio
           unit_of_measurement: "%"
-          value_template: "{{ ((states('sensor.e3dc_autarky_and_consumption')|int(0) / 256 - states('sensor.e3dc_autarky')|int(0)) * 256)|round(0,'floor') }}"
-        e3dc_emergency_power_state_text:
-          friendly_name: E3DC Emergency Power State Text
+          state: >
+            {{ ((states('sensor.e3dc_autarky_and_consumption') | int(0) / 256
+                - states('sensor.e3dc_autarky') | int(0)) * 256) | round(0, 'floor') }}
+        - name: "E3DC Emergency Power State Text"
           unique_id: e3dc_emergency_power_state_text
-          value_template: >
+          default_entity_id: sensor.e3dc_emergency_power_state_text
+          state: >
             {% set eps = states('sensor.e3dc_emergency_power_state') %}
             {% if eps == '0' %}
               nicht unterstützt
@@ -86,15 +88,15 @@ e3dc_sensors:
             {% else %}
               unbekannt
             {% endif %}
-        e3dc_sg_ready_state_text:
-          friendly_name: E3DC SG Ready State Text
+        - name: "E3DC SG Ready State Text"
           unique_id: e3dc_sg_ready_state_text
-          value_template: >
-            {% set sgrs = states('sensor.e3dc_sg_ready_state') %}
+          default_entity_id: sensor.e3dc_sg_ready_state_text
+          state: >
+            {% set sgrs = states('sensor.e3dc_sg_ready_status') %}
             {% if sgrs == '1' %}
               sperrbetrieb
             {% elif sgrs == '2' %}
-              normalberrieb
+              normalbetrieb
             {% elif sgrs == '3' %}
               pv-überschussbetrieb
             {% elif sgrs == '4' %}
@@ -102,7 +104,8 @@ e3dc_sensors:
             {% else %}
               unbekannt
             {% endif %}
-    # Integrations
+  # Integrations
+  sensor:
     - platform: integration
       source: sensor.e3dc_grid_import_power
       name: E3DC Grid Import Energy
