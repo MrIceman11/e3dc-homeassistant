@@ -92,7 +92,7 @@ e3dc_sensors:
           unique_id: e3dc_sg_ready_state_text
           default_entity_id: sensor.e3dc_sg_ready_state_text
           state: >
-            {% set sgrs = states('sensor.e3dc_sg_ready_status') %}
+            {% set sgrs = states('sensor.e3dc_sg_ready_state') %}
             {% if sgrs == '1' %}
               sperrbetrieb
             {% elif sgrs == '2' %}
