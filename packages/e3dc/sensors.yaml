@@ -108,19 +108,19 @@ e3dc_sensors:
   sensor:
     - platform: integration
       source: sensor.e3dc_grid_import_power
-      name: E3DC Grid Import Energy
+      name: E3DC Grid Import Power
       unit_prefix: k
       round: 2
       method: left
     - platform: integration
       source: sensor.e3dc_grid_export_power
-      name: E3DC Grid Export Energy
+      name: E3DC Grid Export Power
       unit_prefix: k
       round: 2
       method: left
     - platform: integration
       source: sensor.e3dc_solar_power
-      name: E3DC Solar Energy
+      name: E3DC Solar Power
       unit_prefix: k
       round: 2
       method: left
@@ -132,19 +132,19 @@ e3dc_sensors:
       method: left
     - platform: integration
       source: sensor.e3dc_battery_power
-      name: E3DC Builtin Battery Energy
+      name: E3DC Builtin Battery Power
       unit_prefix: k
       round: 2
       method: left
     - platform: integration
       source: sensor.e3dc_battery_charge_power
-      name: E3DC Battery Charge Energy
+      name: E3DC Battery Charge Power
       unit_prefix: k
       round: 2
       method: left
     - platform: integration
       source: sensor.e3dc_battery_discharge_power
-      name: E3DC Battery Discharge Energy
+      name: E3DC Battery Discharge Power
       unit_prefix: k
       round: 2
       method: left
@@ -156,7 +156,7 @@ e3dc_sensors:
       method: left
     - platform: integration
       source: sensor.e3dc_wallbox_solar_power
-      name: E3DC Wallbox Solar Energy
+      name: E3DC Wallbox Solar Power
       unit_prefix: k
       round: 2
       method: left
