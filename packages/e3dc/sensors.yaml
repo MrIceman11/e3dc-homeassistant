@@ -108,55 +108,64 @@ e3dc_sensors:
   sensor:
     - platform: integration
       source: sensor.e3dc_grid_import_power
-      name: E3DC Grid Import Power
+      name: E3DC Grid Import Energy
+      unique_id: e3dc_grid_import_energy
       unit_prefix: k
       round: 2
       method: left
     - platform: integration
       source: sensor.e3dc_grid_export_power
-      name: E3DC Grid Export Power
+      name: E3DC Grid Export Energy
+      unique_id: e3dc_grid_export_energy
       unit_prefix: k
       round: 2
       method: left
     - platform: integration
       source: sensor.e3dc_solar_power
-      name: E3DC Solar Power
+      name: E3DC Solar Energy
+      unique_id: e3dc_solar_energy
       unit_prefix: k
       round: 2
       method: left
     - platform: integration
       source: sensor.e3dc_external_power
-      name: E3DC External Power
+      name: E3DC External Energy
+      unique_id: e3dc_external_energy
       unit_prefix: k
       round: 2
       method: left
     - platform: integration
       source: sensor.e3dc_battery_power
-      name: E3DC Builtin Battery Power
+      name: E3DC Builtin Battery Energy
+      unique_id: e3dc_battery_energy
       unit_prefix: k
       round: 2
       method: left
     - platform: integration
       source: sensor.e3dc_battery_charge_power
-      name: E3DC Battery Charge Power
+      name: E3DC Battery Charge Energy
+      unique_id: e3dc_battery_charge_energy
       unit_prefix: k
       round: 2
       method: left
     - platform: integration
       source: sensor.e3dc_battery_discharge_power
-      name: E3DC Battery Discharge Power
+      name: E3DC Battery Discharge Energy
+      unique_id: e3dc_battery_discharge_energy
       unit_prefix: k
       round: 2
       method: left
     - platform: integration
       source: sensor.e3dc_wallbox_power
-      name: E3DC Wallbox Power
+      name: E3DC Wallbox Energy
+      unique_id: e3dc_wallbox_energy
       unit_prefix: k
       round: 2
       method: left
     - platform: integration
       source: sensor.e3dc_wallbox_solar_power
-      name: E3DC Wallbox Solar Power
+      name: E3DC Wallbox Solar Energy
+      unique_id: e3dc_wallbox_solar_energy
       unit_prefix: k
       round: 2
       method: left
