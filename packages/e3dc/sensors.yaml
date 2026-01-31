@@ -88,16 +88,17 @@ e3dc_sensors:
         - name: "E3DC SG Ready State Text"
           unique_id: e3dc_sg_ready_state_text
           default_entity_id: sensor.e3dc_sg_ready_state_text
+          # Description here: https://www.gridx.ai/de/knowledge/sg-ready
           state: >
             {% set sgrs = states('sensor.e3dc_sg_ready_state') %}
             {% if sgrs == '1' %}
-              sperrbetrieb
+              Sperrbetrieb
             {% elif sgrs == '2' %}
-              normalbetrieb
+              Normalbetrieb
             {% elif sgrs == '3' %}
-              pv-überschussbetrieb
+              Einschaltempfehlung
             {% elif sgrs == '4' %}
-              betrieb für abriegelung
+              Anlaufbefehl
             {% else %}
               unbekannt
             {% endif %}
