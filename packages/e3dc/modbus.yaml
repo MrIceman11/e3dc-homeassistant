@@ -78,7 +78,7 @@ e3dc_modbus:
           swap: word
         - name: E3DC Wallbox Power
           unique_id: e3dc_wallbox_power
-          unit_of_measurement: W 
+          unit_of_measurement: W
           device_class: power
           data_type: int32
           address: 40077
@@ -86,7 +86,7 @@ e3dc_modbus:
           swap: word
         - name: E3DC Wallbox Solar Power
           unique_id: e3dc_wallbox_solar_power
-          unit_of_measurement: W 
+          unit_of_measurement: W
           device_class: power
           data_type: int32
           address: 40079
@@ -150,5 +150,33 @@ e3dc_modbus:
           data_type: int16
           address: 40107
           device_class: power
-          unit_of_measurement: W          
+          unit_of_measurement: W
+          scan_interval: 10
+        # Grid Voltage
+        - name: E3DC L1 Grid Voltage
+          unique_id: e3dc_l1_grid_voltage_6608742
+          data_type: uint16
+          scale: 100
+          address: 41017
+          device_class: voltage
+          unit_of_measurement: V
+          state_class: measurement
+          scan_interval: 10
+        - name: E3DC L2 Grid Voltage
+          unique_id: e3dc_l2_grid_voltage_6608742
+          data_type: uint16
+          scale: 100
+          address: 41018
+          device_class: voltage
+          unit_of_measurement: V
+          state_class: measurement
+          scan_interval: 10
+        - name: E3DC L3 Grid Voltage
+          unique_id: e3dc_l3_grid_voltage_6608742
+          data_type: uint16
+          scale: 100
+          address: 41019
+          device_class: voltage
+          unit_of_measurement: V
+          state_class: measurement
           scan_interval: 10
