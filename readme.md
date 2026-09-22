@@ -4,13 +4,13 @@ This is a custom configuration for Home Assistant to read data from an E3DC devi
 
 ## Installation
 
-Copy the folder `packages` with it's contents to your Home Assistant server at the same level as the `configuration.yaml` file. 
+Copy the folder `packages` with its contents to your Home Assistant server at the same level as the `configuration.yaml` file.
 
 Be sure that you have activated Modbus in your storage.
 
 ## Configuration
 
-Add the following line to your `configuration.yaml` file to make sure, the packages are loaded:
+Add the following line to your `configuration.yaml` file to make sure the packages are loaded:
 
 ```
 homeassistant:
@@ -21,12 +21,11 @@ Edit the file `packages/e3dc/modbus.yaml` and add your E3DC device IP address.
 
 ## Extra Config
 
-If you want to add utility_meter for creating daily/weekly/monthly sensors for better graphs or exporting to prometheus, you can add the the file `extras/utility_meter.yaml` into the `packages` folder.
+If you want to add utility_meter for creating daily/weekly/monthly sensors for better graphs or exporting to prometheus, you can add the file `extras/utility_meter.yaml` into the `packages` folder.
 
 ## Wallbox
 
-Utility meters for the wallbox are inclued. You can track the wallbox energy in the enregy panel by adding `sensor.e3dc_wallbox_energie` to the individual devices section like shown in the example.
-
+Utility meters for the wallbox are included. You can track the wallbox energy in the energy panel by adding `sensor.e3dc_wallbox_energie` to the individual devices section like shown in the example.
 
 ## Usage
 
@@ -43,18 +42,37 @@ It is normal that some sensors are not available. This is because the E3DC devic
 
 The following sensors are available:
 
+### Power & State
+
   * `e3dc_grid_export_power` - Grid Export Power in Watt
   * `e3dc_grid_import_power` - Grid Import Power in Watt
   * `e3dc_battery_charge_power` - Battery Charge Power in Watt
   * `e3dc_battery_discharge_power` - Battery Discharge Power in Watt
   * `e3dc_autarky` - Autarky in % per day
   * `e3dc_external_power` - Power of an additional source in Watt
-  * `e3dc_own_consumption` - Own Consumption in % per day
+  * `e3dc_own_consumption_ratio` - Own Consumption in % per day
   * `e3dc_emergency_power_state_text` - Emergency power state in text
+  * `e3dc_sg_ready_state_text` - SG Ready state in text
   * `e3dc_wallbox_power` - Wallbox Power in Watt
+
+### Power Meter
+
+  * `e3dc_string_1_power` - PV String 1 Power in Watt
+  * `e3dc_string_2_power` - PV String 2 Power in Watt
+  * `e3dc_powermeter_l1` - Power Meter Phase L1 in Watt
+  * `e3dc_powermeter_l2` - Power Meter Phase L2 in Watt
+  * `e3dc_powermeter_l3` - Power Meter Phase L3 in Watt
+
+### Grid Voltage
+
+  * `e3dc_l1_grid_voltage` - Grid Voltage Phase L1 in Volt
+  * `e3dc_l2_grid_voltage` - Grid Voltage Phase L2 in Volt
+  * `e3dc_l3_grid_voltage` - Grid Voltage Phase L3 in Volt
+
+> **Note:** The voltage registers use `scale: 100`. If the sensors show values like 23100 instead of 231 V, change `scale` to `0.01` in `packages/e3dc/modbus.yaml`.
 
 ## Credits
 
 This configuration Files are based on the work of Community-Contribution: [E3DC in Energy Dashboard](https://community.home-assistant.io/t/e3dc-in-energy-dashboard/379800)
 
-Thangs to [Roman](https://github.com/Roemer) for Sharing his work.
+Thanks to [Roman](https://github.com/Roemer) for sharing his work.
