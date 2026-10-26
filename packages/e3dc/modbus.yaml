@@ -116,7 +116,7 @@ e3dc_modbus:
           scan_interval: 10
         # Power Meter
         - name: E3DC string 1 power
-          unique_id: e3dc_string1_power_6608742
+          unique_id: e3dc_string1_power
           data_type: uint16
           address: 40101
           device_class: power
@@ -124,7 +124,7 @@ e3dc_modbus:
           state_class: measurement
           scan_interval: 10
         - name: E3DC string 2 power
-          unique_id: e3dc_string2_power_6608742
+          unique_id: e3dc_string2_power
           data_type: uint16
           address: 40102
           device_class: power
@@ -132,21 +132,21 @@ e3dc_modbus:
           state_class: measurement
           scan_interval: 10
         - name: E3DC powermeter L1
-          unique_id: e3dc_powermeter_L1_6608742
+          unique_id: e3dc_powermeter_L1
           data_type: int16
           address: 40105
           device_class: power
           unit_of_measurement: W
           scan_interval: 10
         - name: E3DC powermeter L2
-          unique_id: e3dc_powermeter_L2_6608742
+          unique_id: e3dc_powermeter_L2
           data_type: int16
           address: 40106
           device_class: power
           unit_of_measurement: W
           scan_interval: 10
         - name: E3DC powermeter L3
-          unique_id: e3dc_powermeter_L3_6608742
+          unique_id: e3dc_powermeter_L3
           data_type: int16
           address: 40107
           device_class: power
@@ -154,27 +154,30 @@ e3dc_modbus:
           scan_interval: 10
         # Grid Voltage
         - name: E3DC L1 Grid Voltage
-          unique_id: e3dc_l1_grid_voltage_6608742
+          unique_id: e3dc_l1_grid_voltage
           data_type: uint16
-          scale: 100
+          scale: 0.1
+          precision: 1
           address: 41017
           device_class: voltage
           unit_of_measurement: V
           state_class: measurement
           scan_interval: 10
         - name: E3DC L2 Grid Voltage
-          unique_id: e3dc_l2_grid_voltage_6608742
+          unique_id: e3dc_l2_grid_voltage
           data_type: uint16
-          scale: 100
+          scale: 0.1
+          precision: 1
           address: 41018
           device_class: voltage
           unit_of_measurement: V
           state_class: measurement
           scan_interval: 10
         - name: E3DC L3 Grid Voltage
-          unique_id: e3dc_l3_grid_voltage_6608742
+          unique_id: e3dc_l3_grid_voltage
           data_type: uint16
-          scale: 100
+          scale: 0.1
+          precision: 1
           address: 41019
           device_class: voltage
           unit_of_measurement: V

@@ -69,7 +69,7 @@ The following sensors are available:
   * `e3dc_l2_grid_voltage` - Grid Voltage Phase L2 in Volt
   * `e3dc_l3_grid_voltage` - Grid Voltage Phase L3 in Volt
 
-> **Note:** The voltage registers use `scale: 100`. If the sensors show values like 23100 instead of 231 V, change `scale` to `0.01` in `packages/e3dc/modbus.yaml`.
+> **Note:** The voltage registers report tenths of a volt (for example, 2310). The `scale: 0.1` setting converts these values to volts (231 V).
 
 ## Credits
 
