@@ -165,3 +165,67 @@ e3dc_sensors:
       unit_prefix: k
       round: 2
       method: left
+    # Five-minute grid voltage statistics
+    - platform: statistics
+      name: E3DC L1 Grid Voltage 5 Minute Minimum
+      entity_id: sensor.e3dc_l1_grid_voltage
+      state_characteristic: value_min
+      max_age:
+        minutes: 5
+      sampling_size: 300
+    - platform: statistics
+      name: E3DC L1 Grid Voltage 5 Minute Maximum
+      entity_id: sensor.e3dc_l1_grid_voltage
+      state_characteristic: value_max
+      max_age:
+        minutes: 5
+      sampling_size: 300
+    - platform: statistics
+      name: E3DC L1 Grid Voltage 5 Minute Median
+      entity_id: sensor.e3dc_l1_grid_voltage
+      state_characteristic: median
+      max_age:
+        minutes: 5
+      sampling_size: 300
+    - platform: statistics
+      name: E3DC L2 Grid Voltage 5 Minute Minimum
+      entity_id: sensor.e3dc_l2_grid_voltage
+      state_characteristic: value_min
+      max_age:
+        minutes: 5
+      sampling_size: 300
+    - platform: statistics
+      name: E3DC L2 Grid Voltage 5 Minute Maximum
+      entity_id: sensor.e3dc_l2_grid_voltage
+      state_characteristic: value_max
+      max_age:
+        minutes: 5
+      sampling_size: 300
+    - platform: statistics
+      name: E3DC L2 Grid Voltage 5 Minute Median
+      entity_id: sensor.e3dc_l2_grid_voltage
+      state_characteristic: median
+      max_age:
+        minutes: 5
+      sampling_size: 300
+    - platform: statistics
+      name: E3DC L3 Grid Voltage 5 Minute Minimum
+      entity_id: sensor.e3dc_l3_grid_voltage
+      state_characteristic: value_min
+      max_age:
+        minutes: 5
+      sampling_size: 300
+    - platform: statistics
+      name: E3DC L3 Grid Voltage 5 Minute Maximum
+      entity_id: sensor.e3dc_l3_grid_voltage
+      state_characteristic: value_max
+      max_age:
+        minutes: 5
+      sampling_size: 300
+    - platform: statistics
+      name: E3DC L3 Grid Voltage 5 Minute Median
+      entity_id: sensor.e3dc_l3_grid_voltage
+      state_characteristic: median
+      max_age:
+        minutes: 5
+      sampling_size: 300

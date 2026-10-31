@@ -69,8 +69,13 @@ The following sensors are available:
   * `e3dc_l2_grid_voltage` - Grid Voltage Phase L2 in Volt
   * `e3dc_l3_grid_voltage` - Grid Voltage Phase L3 in Volt
 
-> **Note:** The voltage registers use `scale: 100`. If the sensors show values like 23100 instead of 231 V, change `scale` to `0.01` in `packages/e3dc/modbus.yaml`.
+> **Note:** The voltage registers report tenths of a volt (for example, 2310). The `scale: 0.1` setting converts these values to volts (231 V).
 
+Five-minute rolling minimum, maximum, and median sensors are also available for each grid voltage phase:
+
+  * `e3dc_l1_grid_voltage_5_minute_minimum`, `e3dc_l1_grid_voltage_5_minute_maximum`, `e3dc_l1_grid_voltage_5_minute_median`
+  * `e3dc_l2_grid_voltage_5_minute_minimum`, `e3dc_l2_grid_voltage_5_minute_maximum`, `e3dc_l2_grid_voltage_5_minute_median`
+  * `e3dc_l3_grid_voltage_5_minute_minimum`, `e3dc_l3_grid_voltage_5_minute_maximum`, `e3dc_l3_grid_voltage_5_minute_median`
 ## Credits
 
 This configuration Files are based on the work of Community-Contribution: [E3DC in Energy Dashboard](https://community.home-assistant.io/t/e3dc-in-energy-dashboard/379800)
